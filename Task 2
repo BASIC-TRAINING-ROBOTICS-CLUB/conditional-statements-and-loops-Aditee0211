@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <math.h>
+
+double range(double v0, double theta) {
+    
+    double theta_rad = theta * (3.14 / 180);
+
+    double g = 9.8; 
+    return (v0 * v0) * sin(2 * theta_rad) / g;
+}
+
+
+double max_height(double v0, double theta) {
+    
+    double theta_rad = theta * (3.14 / 180);
+
+    
+    double g = 9.8; 
+    return (v0 * v0) * sin(theta_rad) * sin(theta_rad) / (2 * g);
+}
+
+
+double time_of_flight(double v0, double theta) {
+   
+    double theta_rad = theta * (3.14/ 180);
+
+    double g = 9.8; 
+    return 2 * v0 * sin(theta_rad) / g;
+}
+
+int main() {
+    double v0, theta;
+
+    printf("Enter initial velocity (m/s): ");
+    scanf("%lf", &v0);
+    printf("Enter angle of projection (degrees): ");
+    scanf("%lf", &theta);
+
+    printf("Range: %.2f meters\n", range(v0, theta));
+    printf("Maximum height: %.2f meters\n", max_height(v0, theta));
+    printf("Time of flight: %.2f seconds\n", time_of_flight(v0, theta));
+
+    return 0;
+}
